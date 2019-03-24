@@ -1,5 +1,5 @@
-#一种pdf展示方案：FLexPaper
-##引言
+# 一种pdf展示方案：FLexPaper #
+## 引言 
 如果想要在网页中展示PDF，但是不希望他人下载或打印这些PDF，该如何实现呢？在网页中展示PDF有很多方案：
 A、	首先< object >、< embed >、< iframe >这几个标签就能实现PDF文件的预览（无需JavaScript支持）
 B、	我还在网上看了下发现挺多第三方js库可以实现PDF预览，如jQuery Document Viewer、jquery.media.js、PDFObject、PDF.js等等。我大概看了下PDFObject、PDF.js这两个库，前者并不是一个PDF的渲染工具，而是通过使用< embed >标签来显示PDF；后者则会解析PDF文件内容，还能将PDF渲染成Canvas。
