@@ -63,10 +63,10 @@ hu_HU (Hungarian)
 创建html页面test.html，代码如下：
   ![3](assets/th/3.png)
 test.html文件以及需要的js，swf文件组织结构如下图所示：
-　　  ![4](assets/th/4.png)
+ ![4](assets/th/4.png)
 test.html文件组织结构
 　　显示1.swf文件的效果如下图所示：
- 
+  ![5](assets/th/5.png)
 FlexPaper下显示Paper.swf效果，可以看到显示效果不错，自动适应页面宽度，且不可打印，不可下载。
 ## 问题及解决
 ### 打印问题
