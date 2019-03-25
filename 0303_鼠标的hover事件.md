@@ -6,7 +6,7 @@ Date: 2019/3/24
 
 在上一周的二级页面图纸中，设计提出了一个新功能：标题长度固定，但是指针靠近可以查看完整标题。
 
-![1](assets/03/03/YanYijun/1.JPG)
+![1](https://github.com/YanYijun/Blog-Share/blob/master/assets/03/03/YanYijun/1.JPG)
 
 
 ## 鼠标的hover事件
@@ -26,13 +26,13 @@ Date: 2019/3/24
 > ——来自菜鸟教程
 
 
-##实现：
+## 实现：
 
 
 >把完整标题文字渲染到标签的属性里；然后鼠标移过去的时候，把属性拿到，创建一个div元素，把文字显示出来。
 >显示的时候根据鼠标的坐标定位div位置。
 
->##jQuery代码
+## jQuery代码
 
 ```+jquery
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.slim.js"></script>
@@ -55,7 +55,7 @@ Date: 2019/3/24
 
 ```
 
-##HTML代码
+## HTML代码
 
 ```+html
 <h4 class="h4" data-title="从C++开始认识那些你不知道的关系"
@@ -63,7 +63,7 @@ style="color:#fbfcfc;">&nbsp;&nbsp;+C++</h4>
 
 ```
 
-##CSS代码
+## CSS代码
 
 ```+css
 #mytitle{
@@ -76,11 +76,11 @@ style="color:#fbfcfc;">&nbsp;&nbsp;+C++</h4>
 
 ```
 
-##实现结果
+## 实现结果
 
-![2](assets/03/03/YanYijun/2.png)
+![2](https://github.com/YanYijun/Blog-Share/blob/master/assets/03/03/YanYijun/2.png)
 
-##总结
+## 总结
 
 1、最初看到这个功能时先尝试了onfocus,但实现效果不佳；
 
