@@ -22,9 +22,13 @@
 ## 怎样上传新文章？
 
 Step 1. Fork 本项目得到 nickname/Blog-Share（此处的“nickname”即是各位自己的用户名）
+
 Step 2. Clone 你的仓库到本地电脑得到 local/Blog-Share
+
 Step 3. 在本地仓库中编写你的文章，写完后 commit
+
 Step 4. push local/Blog-Share 到 nickname/Blog-Share
+
 Step 5. 提交一个 pull request，等待review
 
 ## 转载须知
