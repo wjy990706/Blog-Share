@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="为切实提高工作室成员的学习积极性、涉猎宽度及思考的深度，从本学期开始，奇点工作室倡议每位成员每周至少完成一篇博客的写作及分享。涉及计算机基础理论、数学学习、数据分析、网站开发、网页设计、金融科技等等方面的学习经历和收获，也有相互之间的交流与讨论。当然，我们非常欢迎工作室之外的朋友们对我们的思考和学习笔记提出指正意见，也希望更多志同道合的朋友可以参与到我们这一次的尝试与努力中来，我们愿意相信，一个人走得快，一群人走得远，希望我们可以在柳湖旁一起建造一片GEEK之林！">
+    <meta name="keyword"  content="SWUFE, 奇点工作室, Singularity, singularity, Singularitylab, Singularity-lab, 技术, 博客">
+    <link rel="shortcut icon" href="/huxblog-boilerplate/img/favicon.ico">
+
+    <title>SWUFE 奇点工作室学习博客交换站</title>
+
+    <link rel="canonical" href="http://localhost:4000/huxblog-boilerplate/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/huxblog-boilerplate/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/huxblog-boilerplate/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/huxblog-boilerplate/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/huxblog-boilerplate/">SWUFE 奇点工作室学习博客交换站</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/huxblog-boilerplate/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/huxblog-boilerplate/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/huxblog-boilerplate/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Page Header -->
+<header class="intro-header" style="background-image: url('/huxblog-boilerplate/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <h1>SWUFE 奇点工作室学习博客交换站</h1>
+                    <!--<hr class="small">-->
+                    <span class="subheading"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+	<div class="row">
+        
+
+<!-- USE SIDEBAR -->
+    <!-- Post Container -->
+    		<div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
+            ">
+    			
+<div class="post-preview">
+  <a href="/huxblog-boilerplate/2019/03/25/%E4%B8%80%E7%A7%8D%E7%BD%91%E9%A1%B5PDF%E5%B1%95%E7%A4%BA%E6%96%B9%E6%A1%88/">
+    <h2 class="post-title">
+      一种pdf展示方案：FLexPaper
+    </h2>
+    
+    <div class="post-content-preview">
+      引言
+如果想要在网页中展示PDF，但是不希望他人下载或打印这些PDF，该如何实现呢？在网页中展示PDF有很多方案：
+
+  A、    首先&lt; object &gt;、&lt; embed &gt;、&lt; iframe &gt;这几个标签就能实现PDF文件的预览（无需JavaScript支持）
+  B、    我还在网上看了下发现挺多第三方js库可以实现PDF预览，如jQuery D...
+    </div>
+  </a>
+  <p class="post-meta">
+    Posted by 汤航 on March 25, 2019
+  </p>
+</div>
+<hr>
+
+<div class="post-preview">
+  <a href="/huxblog-boilerplate/2019/03/25/Linux-CentOS7%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85python3%E5%B9%B6%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83_rail1000/">
+    <h2 class="post-title">
+      Linux-CentOS7系统下安装python3并配置环境
+    </h2>
+    
+    <div class="post-content-preview">
+      首先，因为centos7以上的系统已经安装了python2，所以，如果直接安装python3的话，之后会出现一系列的问题，所以需要修改环境
+
+输入命令python -V查看环境:
+
+python -V
+
+发现是python２.7.5，这个python版本已经不适合现在的开发了，但是centos系统的yum又是依赖python2.7.5的，所以需要解决这个问题
+
+在安装python3之前需要安...
+    </div>
+  </a>
+  <p class="post-meta">
+    Posted by 桂志强 on March 25, 2019
+  </p>
+</div>
+<hr>
+
+<div class="post-preview">
+  <a href="/huxblog-boilerplate/2019/03/25/HTTP-HTTPS-(SSL&TLS)/">
+    <h2 class="post-title">
+      HTTP—>HTTPS (SSL/TLS)
+    </h2>
+    
+    <div class="post-content-preview">
+      HTTP（HyperText Transfer Protocol）作为一种无状态的、简单快速的、基于 TCP的”可靠“传输协议。它是否足够安全呢？与HTTPS又有什么关系呢？
+
+HTTP与HTTPS
+
+1. 什么是HTTP？
+
+
+  
+    大部分网站都是通过 HTTP 协议来传输 Web 页面以及 Web 页面上包含的图片、CSS 样式、JS 脚本等信息的，HTTP协议可以说是万维网的数...
+    </div>
+  </a>
+  <p class="post-meta">
+    Posted by iyin on March 25, 2019
+  </p>
+</div>
+<hr>
+
+<div class="post-preview">
+  <a href="/huxblog-boilerplate/2019/03/24/Django%E9%A1%B9%E7%9B%AE%E4%B8%8A%E7%BA%BF%E9%83%A8%E7%BD%B2%E5%85%A8%E6%B5%81%E7%A8%8B/">
+    <h2 class="post-title">
+      Django项目上线部署全流程
+    </h2>
+    
+    <div class="post-content-preview">
+      Django项目上线部署全流程
+
+Author：林柯秀
+
+Date：2019-03-24
+
+目前在Linux系统上部署Django项目有两种主流方案：Nginx+uWSGI+Django/Apache+uWSGI+Django，本文介绍的部署方案为：Nginx+uWSGI+Django。
+
+Nginx是一个免费的，开源的，高性能的HTTP服务器和反向代理，以及一个IMAP / POP3代理服...
+    </div>
+  </a>
+  <p class="post-meta">
+    Posted by 林柯秀 on March 24, 2019
+  </p>
+</div>
+<hr>
+
+<div class="post-preview">
+  <a href="/huxblog-boilerplate/2019/03/24/%E9%BC%A0%E6%A0%87%E7%9A%84hover%E4%BA%8B%E4%BB%B6/">
+    <h2 class="post-title">
+      鼠标的 hover 事件
+    </h2>
+    
+    <div class="post-content-preview">
+      在上一周的二级页面图纸中，设计提出了一个新功能：标题长度固定，但是指针靠近可以查看完整标题。
+
+
+
+鼠标的hover事件
+
+定义和用法：
+
+
+  
+    定义：hover() 方法规定当鼠标指针悬停在被选元素上时要运行的两个函数。 方法触发 mouseenter 和 mouseleave 事件。
+   注意: 如果只指定一个函数，则 mouseenter 和 mouseleave 都执行它...
+    </div>
+  </a>
+  <p class="post-meta">
+    Posted by 闫怡君 on March 24, 2019
+  </p>
+</div>
+<hr>
+
+<div class="post-preview">
+  <a href="/huxblog-boilerplate/2019/03/24/Apache%E9%85%8D%E7%BD%AEhttps%E8%AE%BF%E9%97%AE%E5%8F%8A%E8%B7%B3%E8%BD%AC/">
+    <h2 class="post-title">
+      Apache 配置 https 访问及跳转
+    </h2>
+    
+    <div class="post-content-preview">
+      这星期为Apache服务器安装了https，过程和以前用Tomcat的有很大差别。记笔记总结一下。
+环境
+
+
+  操作系统：CentOS 7.4
+  Apache：2.4
+
+
+获取证书
+
+
+  开启 https 服务；
+  为域名申请SSL证书。成功后，下载证书文件和私钥文件。
+其中，Apache文件夹内应有3个文件：
+
+
+
+  1_root_bundle.crt
+2_www.domain....
+    </div>
+  </a>
+  <p class="post-meta">
+    Posted by Cathandra on March 24, 2019
+  </p>
+</div>
+<hr>
+
+<div class="post-preview">
+  <a href="/huxblog-boilerplate/2019/03/24/Anaconda-%E5%B8%B8%E7%94%A8%E7%9A%84conda%E5%91%BD%E4%BB%A4/">
+    <h2 class="post-title">
+      Anaconda 常用conda命令
+    </h2>
+    
+    <div class="post-content-preview">
+      现阶段我们在学习python时，一般都会被优先推荐使用Anaconda，因为它的环境配置和包的安装快捷简单。
+
+什么是Anaconda
+首先，我们来认识一下Anaconda：
+
+
+  Anaconda指的是一个开源的Python发行版本，其包含了conda、Python等180多个科学包及其依赖项。它的包管理比较简单方便.管理虚拟环境也很方便好用。不过也正是因为包含了大量的科学包，所以Ana...
+    </div>
+  </a>
+  <p class="post-meta">
+    Posted by 董国珍 on March 24, 2019
+  </p>
+</div>
+<hr>
+
+<div class="post-preview">
+  <a href="/huxblog-boilerplate/2019/03/23/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E4%B8%A4%E7%82%B9%E6%B3%A8%E6%84%8F/">
+    <h2 class="post-title">
+      网页设计两点注意
+    </h2>
+    
+    <div class="post-content-preview">
+      加入奇点以前，我一直认为网站的美观度和新颖是网页设计中最重要的点，后来，在第一次一级页面的设计中，我仔细观察了各大网站的官网设计，有了以下几点发现。
+
+一、网页设计应优先考虑用户体验
+
+现在网络发展已到达一定高度，网站数量极多，人们对网站的美观要求也越来越高，部分网站为了凸显个性，将页面设计得极为复杂，或是过度简单，不可否认该页面具有较高的艺术审美，但这种不恰当的设计却严重影响了用户体验，降...
+    </div>
+  </a>
+  <p class="post-meta">
+    Posted by 王杨 on March 23, 2019
+  </p>
+</div>
+<hr>
+
+<div class="post-preview">
+  <a href="/huxblog-boilerplate/2019/03/23/%E5%BD%93%E6%88%91%E4%BB%AC%E8%AF%B4%E8%B5%B7-MVC-%E6%97%B6-%E6%88%91%E4%BB%AC%E5%9C%A8%E8%B0%88%E4%BB%80%E4%B9%88/">
+    <h2 class="post-title">
+      当我们说起 MVC 时，我们在谈什么
+    </h2>
+    
+    <div class="post-content-preview">
+      我们都知道，MVC 对应着三个名词：模型（Model）、视图（View）和控制器（Controller）。但是，在我们每次遇到 MVC 这个专有名词的时候，我们说的是同一个东西吗？
+
+什么是 MVC
+
+我们先来看看维基百科关于 MVC 的定义吧：
+
+
+  
+    模型（Model）：用于封装与应用程序的业务逻辑相关的数据以及对数据的处理方法。“ Model ”有对数据直接访问的权力，例如对...
+    </div>
+  </a>
+  <p class="post-meta">
+    Posted by 李楸柯 on March 23, 2019
+  </p>
+</div>
+<hr>
+
+
+<!-- Pager -->
+
+    		</div>
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/huxblog-boilerplate/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                            
+                                <a href="/huxblog-boilerplate/tags/#前端" title="前端" rel="2">
+                                    前端
+                                </a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <a href="/huxblog-boilerplate/tags/#python" title="python" rel="3">
+                                    python
+                                </a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <a href="/huxblog-boilerplate/tags/#后端" title="后端" rel="3">
+                                    后端
+                                </a>
+                            
+                        
+                            
+                                <a href="/huxblog-boilerplate/tags/#服务器" title="服务器" rel="3">
+                                    服务器
+                                </a>
+                            
+                        
+                            
+                                <a href="/huxblog-boilerplate/tags/#JavaScript" title="JavaScript" rel="2">
+                                    JavaScript
+                                </a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Short About -->
+                <section class="visible-md visible-lg">
+                    <hr><h5><a href="/huxblog-boilerplate/about/">ABOUT ME</a></h5>
+                    <div class="short-about">
+                        
+                            <img src="img/logo1.png" />
+                        
+                        
+                            <p>一个人走得快，一群人走得远，希望我们可以在柳湖旁一起建造一片GEEK之林！</p>
+                        
+                        <!-- SNS Link -->
+                        <ul class="list-inline">
+                            
+                            <li>
+                                <a href="/huxblog-boilerplate/feed.xml">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li>
+                                <a target="_blank" href="https://github.com/singularity-lab">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </section>
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="https://it.swufe.edu.cn">经济信息工程学院</a></li>
+                    
+                        <li><a href="https://github.com">GitHub</a></li>
+                    
+                </ul>
+                
+    		</div>
+        
+	</div>
+</div>
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center">
+          
+          <li>
+            <a href="/huxblog-boilerplate/feed.xml">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+
+          <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+          
+          
+
+
+          
+          
+          <li>
+            <a target="_blank" href="https://github.com/singularity-lab">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="copyright text-muted">
+          Copyright &copy; SWUFE 奇点工作室学习博客交换站 2019
+          <br>
+          Theme by <a href="http://huangxuan.me">Hux</a> |
+          <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px" height="20px" src="https://ghbtns.com/github-btn.html?user=singularity-lab&repo=Blog-Share&type=star&count=true">
+          </iframe>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/huxblog-boilerplate/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/huxblog-boilerplate/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/huxblog-boilerplate/js/hux-blog.min.js "></script>
+
+
+<!-- async load function -->
+<script>
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+  // only load tagcloud.js in tag.html
+  if ($('#tag_cloud').length !== 0) {
+    async ("/js/jquery.tagcloud.js", function() {
+      $.fn.tagcloud.defaults = {
+        //size: {start: 1, end: 1, unit: 'em'},
+        color: {
+          start: '#bbbbee',
+          end: '#0085a1'
+        },
+      };
+      $('#tag_cloud a').tagcloud();
+    })
+  }
+</script>
+
+<!--fastClick.js -->
+<script>
+  async ("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function() {
+    var $nav = document.querySelector("nav");
+    if ($nav) FastClick.attach($nav);
+  })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+  // dynamic User by Hux
+  var _gaId = 'UA-49627206-1';
+  var _gaDomain = 'huangxuan.me';
+
+  // Originial
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', _gaId, _gaDomain);
+  ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+  // dynamic User by Hux
+  var _baId = '4cc1f2d8f3067386cc5cdb626a202900';
+
+  // Originial
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?" + _baId;
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

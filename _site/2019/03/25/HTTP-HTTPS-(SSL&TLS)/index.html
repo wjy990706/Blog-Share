@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="为切实提高工作室成员的学习积极性、涉猎宽度及思考的深度，从本学期开始，奇点工作室倡议每位成员每周至少完成一篇博客的写作及分享。涉及计算机基础理论、数学学习、数据分析、网站开发、网页设计、金融科技等等方面的学习经历和收获，也有相互之间的交流与讨论。当然，我们非常欢迎工作室之外的朋友们对我们的思考和学习笔记提出指正意见，也希望更多志同道合的朋友可以参与到我们这一次的尝试与努力中来，我们愿意相信，一个人走得快，一群人走得远，希望我们可以在柳湖旁一起建造一片GEEK之林！">
+    <meta name="keyword"  content="SWUFE, 奇点工作室, Singularity, singularity, Singularitylab, Singularity-lab, 技术, 博客">
+    <link rel="shortcut icon" href="/huxblog-boilerplate/img/favicon.ico">
+
+    <title>HTTP—>HTTPS (SSL/TLS) - SWUFE 奇点工作室学习博客交换站</title>
+
+    <link rel="canonical" href="http://localhost:4000/huxblog-boilerplate/2019/03/25/HTTP-HTTPS-(SSL&TLS)/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/huxblog-boilerplate/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/huxblog-boilerplate/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/huxblog-boilerplate/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/huxblog-boilerplate/">SWUFE 奇点工作室学习博客交换站</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/huxblog-boilerplate/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/huxblog-boilerplate/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/huxblog-boilerplate/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/huxblog-boilerplate/img/post-bg-2015.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/huxblog-boilerplate/img/post-bg-2015.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/huxblog-boilerplate/tags/#网络" title="网络">网络</a>
+                        
+                        <a class="tag" href="/huxblog-boilerplate/tags/#HTTP" title="HTTP">HTTP</a>
+                        
+                    </div>
+                    <h1>HTTP—>HTTPS (SSL/TLS)</h1>
+                    
+                    
+                    <h2 class="subheading"></h2>
+                    
+                    <span class="meta">Posted by iyin on March 25, 2019</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+				<p>HTTP（HyperText Transfer Protocol）作为一种无状态的、简单快速的、基于 TCP的”可靠“传输协议。它是否足够安全呢？与HTTPS又有什么关系呢？</p>
+
+<h2 id="http与https">HTTP与HTTPS</h2>
+
+<h3 id="1-什么是http">1. 什么是HTTP？</h3>
+
+<ul>
+  <li>
+    <p>大部分网站都是通过 HTTP 协议来传输 Web 页面以及 Web 页面上包含的图片、CSS 样式、JS 脚本等信息的，HTTP协议可以说是万维网的数据通信的基础。</p>
+  </li>
+  <li>
+    <p>但是，近几年，Google、Baidu、Facebook 等互联网巨头开始大力推行 HTTPS， 国内外的很多大型互联网公司很多也都已经启用了全站 HTTPS，这是为什么呢？</p>
+
+    <p>HTTP明文传输带来了很大的<strong>安全隐患</strong>，主要有三大风险：</p>
+
+    <blockquote>
+      <p>窃听风险：第三方可以获知通信内容</p>
+
+      <p>篡改风险：第三方可以修改通信内容</p>
+
+      <p>冒充风险：第三方可以冒充他人身份参与通信</p>
+    </blockquote>
+
+    <p>ps: 抓包可看到使用http传输的图片信息（第四行）：</p>
+
+    <blockquote>
+      <p><img src="/img/1903/03/iyiniyin/1553445596865.png" alt="1553445596865" /></p>
+    </blockquote>
+
+    <p>把他的图片给改了：</p>
+
+    <p><img src="/img/1903/03/iyiniyin/1553452062737.png" alt="1553452062737" /></p>
+  </li>
+</ul>
+
+<h3 id="2-给http加一把锁https">2. 给HTTP加一把锁—&gt;HTTPS</h3>
+
+<ul>
+  <li>
+    <p>HTTPS（HyperText Transfer Protocol over Secure Socket Layer) 开发的主要目的，是提供对网站服务器的身份认证，保护交换数据的隐私与完整性。(from wiki)</p>
+  </li>
+  <li>
+    <p><strong>HTTPS经由HTTP进行通信，利用SSL/TLS来加密数据包。</strong>可以将它理解为HTTP+SSL/TLS， 即 HTTP 下加入 SSL/TLS 层。其层次结构及位置如图：</p>
+
+    <blockquote>
+      <p><img src="assets/03/03/iyiniyin/1553446309418.png" alt="1553446309418" /></p>
+
+      <p>(from 简书)</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>针对HTTP的问题，它提供了以下<strong>解决方案</strong>：</p>
+
+    <blockquote>
+      <p>所有信息都是加密传播，第三方无法窃听
+具有校验机制，一旦被篡改，通信双方会立刻发现
+配备身份证书，防止身份被冒充</p>
+    </blockquote>
+  </li>
+</ul>
+
+<p>那么，SSL/TLS是如何承载HTTP，实现以上方案的呢？</p>
+
+<h2 id="ssttls的工作">SST/TLS的工作</h2>
+
+<h3 id="1-工作机制简介">1. 工作机制简介</h3>
+
+<ul>
+  <li>
+    <p>传输层安全性协议（Transport Layer Security，TLS）及其前身安全套接层（Secure Sockets Layer，SSL）是一种安全协议。</p>
+
+    <p><strong>它指定了一种在应用程序协议（如Http、Telenet、NMTP和FTP等）和TCP/IP协议之间提供数据安全性分层的机制。</strong> 示意图：</p>
+
+    <blockquote>
+      <p><img src="/img/1903/03/iyiniyin/1553446400295.png" alt="1553446400295" /></p>
+
+      <p>(from csdn)</p>
+    </blockquote>
+  </li>
+</ul>
+
+<h3 id="2-结构及功能">2. 结构及功能</h3>
+
+<ul>
+  <li>
+    <p><strong>整体结构</strong></p>
+
+    <p><strong>TLS协议是由TLS记录协议和TLS握手协议这两层协议叠加而成的。</strong></p>
+
+    <p>位于底层的TLS记录协议负责进行加密，而位于上层的TLS握手协议负责除了加密以外的其他各种操作，上层又可以分为4个子协议。如下图所示：</p>
+
+    <p><img src="/img/1903/03/iyiniyin/1553447868551.png" alt="1553447868551" /></p>
+
+    <p>(from wiki)</p>
+  </li>
+  <li>
+    <p><strong>具体功能</strong></p>
+
+    <ul>
+      <li>
+        <p><strong>TLS握手协议</strong>最重要的作用是<strong>进行身份认证与加密信息的协商</strong>，4个子协议功能如下：</p>
+
+        <blockquote>
+          <p><strong>握手协议，是TLS握手协议的一部分（注意区分二者），负责在客户端和服务器之间协商决定密码算法和共享密钥。基于证书的认证操作也是在这个协议中完成。</strong></p>
+
+          <p>密码规格变更协议，负责向通信对象传达变更密码方式的信号。</p>
+
+          <p>警告协议，负责在发生错误时将错误传达给对方。</p>
+
+          <p>应用数据协议，负责将TLS上面承载的应用数据传达给通信对象。</p>
+        </blockquote>
+
+        <p>其中，著名的客户端与服务器<strong>握手过程</strong>如下图所示（本图为个人理解的顺序和过程，其中，服务器必须认证客户端，但是客户端可以不要求服务器发送证书，如果要求，就是双向认证。ps:其实交换密钥的过程也是变相的身份认证了吧）：</p>
+
+        <p><img src="/img/1903/03/iyiniyin/1553448792562.png" alt="1553448792562" /></p>
+
+        <p>简单来说，本过程结束后，客户机与服务器选择了双方都支持的密码算法，生成了共享密钥，完成了身份认证，从而可以建立加密TSL连接。</p>
+      </li>
+      <li>
+        <p><strong>TLS 记录协议</strong>，位于TLS握手协议的下层，是用来封装上层协议数据的协议，负责使用协商好的加密算法及产生的共享密钥对消息进行加密通信。</p>
+
+        <p>所有的传输数据都被封装在记录中，该协议可完成以下工作：分组、组合；压缩、解压缩；消息认证；消息传输等。部分流程如下图所示：</p>
+
+        <blockquote>
+          <p>其中添加的MAC是消息认证码，用于接收方验证消息是否真的是对方产生的。</p>
+
+          <p><img src="/img/1903/03/iyiniyin/1553449674281.png" alt="1553449674281" /></p>
+
+          <p>(from csdn)</p>
+        </blockquote>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>TLS协议与应用层</strong></p>
+
+    <p>TLS协议对于应用层来说是透明的，在编写基于TSL的HTTPS应用时，无论客户端还是服务端都不需要考虑SSL的存在。</p>
+  </li>
+</ul>
+
+<h3 id="3-过程模拟输出示意">3. 过程模拟输出示意</h3>
+
+<p>用open ssl库进行了基于TSL的socket通讯过程模拟，部分输出：</p>
+
+<blockquote>
+  <p><img src="assets/03/03/iyiniyin/1553451193044.png" alt="1553451193044" /></p>
+</blockquote>
+
+<blockquote>
+  <p><img src="assets/03/03/iyiniyin/1553451209002.png" alt="1553451209002" /></p>
+</blockquote>
+
+<blockquote>
+  <p><img src="assets/03/03/iyiniyin/1553451232281.png" alt="1553451232281" /></p>
+</blockquote>
+
+<blockquote>
+  <p><img src="assets/03/03/iyiniyin/1553451240335.png" alt="1553451240335" /></p>
+</blockquote>
+
+<h2 id="补充与总结">补充与总结</h2>
+
+<ol>
+  <li>
+    <p>HTTP默认使用80端口，Https使用443端口。</p>
+  </li>
+  <li>
+    <p>关于安全性</p>
+
+    <p>HTTPS相比HTTP会更加安全，但是由于需要额外加解密操作，效率没有那么高。在登录Https站点和Http站点时，可以明显感觉到性能差异。</p>
+
+    <p>但是HTTPS当然也不是绝对安全，在设计机制、实现、信任模型等方面都可以寻找漏洞进行攻击，比如前些年著名的open ssl心脏滴血漏洞。</p>
+  </li>
+  <li>
+    <p>可以利用Wireshark等抓包工具验证一下握手等过程，还是挺有意思的，HTTP账号和密码完全没有加密，明文传送，可以很容易截获到账号和密码。</p>
+  </li>
+  <li>
+    <p>TLS非常好地利用了密码技术，篇幅限制，握手的详细过程没有在此介绍，计科密码学的课程由于其过程偏繁琐也没有介绍，感兴趣的话可以进一步了解。</p>
+
+    <p>对于在TLS中使用的密码技术总结如下：</p>
+
+    <blockquote>
+      <ul>
+        <li>公钥密码：加密预备主密码</li>
+        <li>单项散列函数：构成伪随机数生成器</li>
+        <li>伪随机数生成器：生成预备主密码；根据主密码生成密钥（密码参数）；生成初始化向量。</li>
+      </ul>
+    </blockquote>
+
+    <blockquote>
+      <ul>
+        <li>对称密码（CBC模式）：确保片段的机密性</li>
+        <li>消息认证码：确保片段的完整性并进行认证</li>
+        <li>认证加密（AEAD）：确保片段的完整性和机密性并进行认证</li>
+      </ul>
+    </blockquote>
+  </li>
+  <li>
+    <p>知乎上有老哥对握手过程的理解…</p>
+
+    <p><img src="assets/03/03/iyiniyin/1553451931548.png" alt="1553451931548" /></p>
+  </li>
+</ol>
+
+
+                <hr>
+
+                
+                <!-- 多说 Share start -->
+                </style>
+                <div class="ds-share"
+                    style="text-align: right"
+                    data-thread-key="/2019/03/25/HTTP--HTTPS (SSL&TLS)"
+                    data-title="HTTP—>HTTPS (SSL/TLS)"
+                    data-url="http://localhost:4000/huxblog-boilerplate/2019/03/25/HTTP-HTTPS-(SSL&TLS)/"
+                    data-images="http://localhost:4000/huxblog-boilerplate/img/post-bg-2015.jpg"
+                    data-content="HTTP（HyperText Transfer Protocol）作为一种无状态的、简单快速的、基于 TCP的”可靠“传输协议。它是否足够安全呢？与HTT... | SWUFE 奇点工作室学习博客交换站 " >
+                    <div class="ds-share-inline">
+                      <ul  class="ds-share-icons-16">
+                        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
+                        <li><a class="ds-wechat flat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+                        <li><a class="ds-weibo flat" href="javascript:void(0);" data-service="weibo">微博</a></li>
+                        <li><a class="ds-douban flat" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
+                      </ul>
+                      <div class="ds-share-icons-more">
+                      </div>
+                    </div>
+                <hr>
+                </div>
+                <!-- 多说 Share end-->
+                
+
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/huxblog-boilerplate/2019/03/24/Django%E9%A1%B9%E7%9B%AE%E4%B8%8A%E7%BA%BF%E9%83%A8%E7%BD%B2%E5%85%A8%E6%B5%81%E7%A8%8B/" data-toggle="tooltip" data-placement="top" title="Django项目上线部署全流程">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/huxblog-boilerplate/2019/03/25/Linux-CentOS7%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85python3%E5%B9%B6%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83_rail1000/" data-toggle="tooltip" data-placement="top" title="Linux-CentOS7系统下安装python3并配置环境">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+
+                
+                <!-- 多说评论框 start -->
+                <div class="comment">
+                    <div class="ds-thread"
+                        data-thread-key="/2019/03/25/HTTP--HTTPS (SSL&TLS)"
+                        data-title="HTTP—>HTTPS (SSL/TLS)"
+                        data-url="http://localhost:4000/huxblog-boilerplate/2019/03/25/HTTP-HTTPS-(SSL&TLS)/" >
+                    </div>
+                </div>
+                <!-- 多说评论框 end -->
+                
+
+                
+
+            </div>
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+                				<a href="/huxblog-boilerplate/tags/#前端" title="前端" rel="2">
+                                    前端
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/huxblog-boilerplate/tags/#python" title="python" rel="3">
+                                    python
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/huxblog-boilerplate/tags/#后端" title="后端" rel="3">
+                                    后端
+                                </a>
+                            
+        				
+                            
+                				<a href="/huxblog-boilerplate/tags/#服务器" title="服务器" rel="3">
+                                    服务器
+                                </a>
+                            
+        				
+                            
+                				<a href="/huxblog-boilerplate/tags/#JavaScript" title="JavaScript" rel="2">
+                                    JavaScript
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="https://it.swufe.edu.cn">经济信息工程学院</a></li>
+                    
+                        <li><a href="https://github.com">GitHub</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User by Hux
+    var _user = 'huxblog';
+
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center">
+          
+          <li>
+            <a href="/huxblog-boilerplate/feed.xml">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+
+          <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+          
+          
+
+
+          
+          
+          <li>
+            <a target="_blank" href="https://github.com/singularity-lab">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="copyright text-muted">
+          Copyright &copy; SWUFE 奇点工作室学习博客交换站 2019
+          <br>
+          Theme by <a href="http://huangxuan.me">Hux</a> |
+          <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px" height="20px" src="https://ghbtns.com/github-btn.html?user=singularity-lab&repo=Blog-Share&type=star&count=true">
+          </iframe>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/huxblog-boilerplate/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/huxblog-boilerplate/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/huxblog-boilerplate/js/hux-blog.min.js "></script>
+
+
+<!-- async load function -->
+<script>
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+  // only load tagcloud.js in tag.html
+  if ($('#tag_cloud').length !== 0) {
+    async ("/js/jquery.tagcloud.js", function() {
+      $.fn.tagcloud.defaults = {
+        //size: {start: 1, end: 1, unit: 'em'},
+        color: {
+          start: '#bbbbee',
+          end: '#0085a1'
+        },
+      };
+      $('#tag_cloud a').tagcloud();
+    })
+  }
+</script>
+
+<!--fastClick.js -->
+<script>
+  async ("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function() {
+    var $nav = document.querySelector("nav");
+    if ($nav) FastClick.attach($nav);
+  })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+  // dynamic User by Hux
+  var _gaId = 'UA-49627206-1';
+  var _gaDomain = 'huangxuan.me';
+
+  // Originial
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', _gaId, _gaDomain);
+  ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+  // dynamic User by Hux
+  var _baId = '4cc1f2d8f3067386cc5cdb626a202900';
+
+  // Originial
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?" + _baId;
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

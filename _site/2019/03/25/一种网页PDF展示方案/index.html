@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="为切实提高工作室成员的学习积极性、涉猎宽度及思考的深度，从本学期开始，奇点工作室倡议每位成员每周至少完成一篇博客的写作及分享。涉及计算机基础理论、数学学习、数据分析、网站开发、网页设计、金融科技等等方面的学习经历和收获，也有相互之间的交流与讨论。当然，我们非常欢迎工作室之外的朋友们对我们的思考和学习笔记提出指正意见，也希望更多志同道合的朋友可以参与到我们这一次的尝试与努力中来，我们愿意相信，一个人走得快，一群人走得远，希望我们可以在柳湖旁一起建造一片GEEK之林！">
+    <meta name="keyword"  content="SWUFE, 奇点工作室, Singularity, singularity, Singularitylab, Singularity-lab, 技术, 博客">
+    <link rel="shortcut icon" href="/huxblog-boilerplate/img/favicon.ico">
+
+    <title>一种pdf展示方案：FLexPaper - SWUFE 奇点工作室学习博客交换站</title>
+
+    <link rel="canonical" href="http://localhost:4000/huxblog-boilerplate/2019/03/25/%E4%B8%80%E7%A7%8D%E7%BD%91%E9%A1%B5PDF%E5%B1%95%E7%A4%BA%E6%96%B9%E6%A1%88/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/huxblog-boilerplate/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/huxblog-boilerplate/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/huxblog-boilerplate/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/huxblog-boilerplate/">SWUFE 奇点工作室学习博客交换站</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/huxblog-boilerplate/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/huxblog-boilerplate/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/huxblog-boilerplate/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/huxblog-boilerplate/img/post-bg-2015.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/huxblog-boilerplate/img/post-bg-2015.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/huxblog-boilerplate/tags/#pdf" title="pdf">pdf</a>
+                        
+                        <a class="tag" href="/huxblog-boilerplate/tags/#JavaScript" title="JavaScript">JavaScript</a>
+                        
+                    </div>
+                    <h1>一种pdf展示方案：FLexPaper</h1>
+                    
+                    
+                    <h2 class="subheading"></h2>
+                    
+                    <span class="meta">Posted by 汤航 on March 25, 2019</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+				<h2 id="引言">引言</h2>
+<p>如果想要在网页中展示PDF，但是不希望他人下载或打印这些PDF，该如何实现呢？在网页中展示PDF有很多方案：</p>
+<ul>
+  <li>A、    首先&lt; object &gt;、&lt; embed &gt;、&lt; iframe &gt;这几个标签就能实现PDF文件的预览（无需JavaScript支持）</li>
+  <li>B、    我还在网上看了下发现挺多第三方js库可以实现PDF预览，如jQuery Document Viewer、jquery.media.js、PDFObject、PDF.js等等。我大概看了下PDFObject、PDF.js这两个库，前者并不是一个PDF的渲染工具，而是通过使用&lt; embed &gt;标签来显示PDF；后者则会解析PDF文件内容，还能将PDF渲染成Canvas。</li>
+  <li>C、    如道客巴巴一样，将pdf转成了flash显示。<br />
+其中，A类的做法展示的PDF渲染效果不佳，也无法调整PDF尺寸默认成自适应屏幕宽度，且必然可以打印PDF，但是可以禁用下载按钮；B类做法渲染效果可以，也能调整到自适应屏幕，可以禁用下载，通过js加挡板也可以实现禁止鼠标右键打印，但是仍然可以通过查看源代码的方法找到pdf地址进行下载；C类将PDF转成flash，效果不错，也能防止用户下载打印PDF，只是加载速度比不上第一种。
+这里，就做一个C类做法的说明。
+    <h2 id="转换">转换</h2>
+    <p>下载<a href="http://www.swftools.org/download.html">swftools工具包</a>,点选exe文件下载而后安装：<br />
+ <img src="/img/1903/03/th/1.png" alt="1" /><br />
+swftools工具包中的PDF2SWF工具可用来将PDF格式文件转换成SWF格式。使用下面的命令可以将pdf文件转换为单页swf文件。<br />
+　　pdf2swf.exe  pdfPath  –o swfPath  –T 9  –f。<br />
+　　pdf2swf为pdf2swf二进制命令的绝对路径；pdfpath为要进行转换的PDF文件的绝对路径；swfPath为转换后swf文件的路径；-T 9 用来设定转换的swf版本为9，这样设置是因为某些版本的swf文件并不能用flexpaper正常显示出来；-f在转换的文档每页中插入一帧，提高转换后文档的稳定性。<br />
+　　上述命令可直接在命令行中运行，实现pdf转换，如果想在Java中去进行pdf转换，做法如下： Java应用程序有一个Runtime类实例，使应用程序能够与其运行的环境相连接。应用程序不能创建自己的Runtime类实例，可以通过Runtime类的getRuntime方法获得当前运行时。获得Runtime类实例之后，即可以调用该类的exec方法创建一个新的进程来执行制定的字符串命令。因此，可以利用exec方法来调用之前所述的PDF2SWF命令来完成PDF至SWF文件的转换，代码如下：<br />
+<img src="/img/1903/03/th/2.png" alt="2" />
+　</p>
+    <h2 id="pdf展示">PDF展示</h2>
+    <p>FlexPaper是一个开源轻量级的文档浏览组件，被设计和比如PDF2SWF库（包含于SWFTools）一起工作，使得在网页上，Adobe Flex以及别的基于Flash的应用程序中显示和交互PDF文件成为可能。即，使得在没有安装PDF阅读器软件的情况下浏览PDF文件成为可能。FlexPaper项目同时提供了Flex库和独立的Flash版本。</p>
+    <h3 id="下载flexpaper">下载FlexPaper</h3>
+    <p>　　下载FlexPaper:FlexPaper在github上的项目地址为https://github.com/flexpaper/flexpaper。<br />
+下载后，我们只需要其中Example/flash中的js文件夹，复制到你的项目文件夹</p>
+    <h3 id="flexpaper参数说明">FlexPaper参数说明</h3>
+    <p>•    SwfFile(String)：需要使用FlexPaper打开的文档<br />
+•    Scale(Number)：初始化缩放比例，参数值应该是大于零的整数（1=100%）<br />
+•    ZoomTransition(String)：FlexPaper中缩放样式，它使用和Tweener一样的样式，默认参数值为easeOut，其他可选值包括：easenone，easeout，linear，easeoutquad<br />
+•    ZoomTime(Number)：从一个缩放比例变为另外一个缩放比例需要花费的时间，该参数值应该为0或更大<br />
+•    ZoomInterval(Number)：缩放比例之间间隔，默认值为0.1，该值应该为正数<br />
+•    FitPageOnLoad(Boolean)：初始化时自适应页面，与使用工具栏上的适应页面按钮同样的效果<br />
+•    FitWidthOnLoad(Boolean)：初始化时自适应页面宽度，与工具栏上的适应宽度按钮同样的效果<br />
+•    localeChain(String)：设置地区（语言），目前支持一下语言：<br />
+en_US (English)<br />
+fr_FR (French)<br />
+zh_CN (Chinese,Simple)<br />
+es_ES (Spanish)<br />
+pt_BR (Brazilian Portugese)<br />
+ru_RU (Russian)<br />
+fi_FN (FInnish)<br />
+de_DE (German)<br />
+nl_NL (Netherlands)<br />
+tr_TR (Turkish)<br />
+se_SE (Swedish)<br />
+pt_PT (Portugese)<br />
+el_EL (Greek)<br />
+da_DN (Danish)<br />
+cz_CS (Czech)<br />
+it_IT (Italian)<br />
+pl_PL (Polish)<br />
+pv_FN (Finish)<br />
+hu_HU (Hungarian)<br />
+•    FullScreenAsMaxWindow(Boolean)：当设置为true时，单击全拼按钮会打开一个FlexPaper最大化的新窗口而不是全屏，当由于flash播放器因为安全而禁止全屏，而使用flexpaper作为独立的flash播放器的时候设置为true是个优先选择<br />
+•    ProgressiveLoading(Boolean)：当设置为true时，展示文档时不会加载完整个文档，而是逐步加载，但是需要将文档中转化为9以上的版本（使用pdf2swf的时候使用-T 9标签）<br />
+•    MaxZoomSize(Number)：设置最大的缩放比例<br />
+•    MinZoomSize(Number)：设置最小的缩放比例<br />
+•    SearchMatchAll(Boolean)：设置为true时，单击搜索所有符合条件的地方高亮显示<br />
+•    InitViewMode(String)：设置启动模式如“Portrait”或“TowPage”<br />
+•    ViewModeToolsVisible(Boolean)：工具栏上是否显示样式选择框<br />
+•    ZoomToolsVisible(Boolean)：工具栏上时候显示缩放工具<br />
+•    NavToolsVisible(Boolean)：工具栏上是否显示导航工具<br />
+•    CursorToolsVisible(Boolean)：工具栏上是否显示光标工具<br />
+•    SearchToolsVisible(Boolean)：工具栏上是否显示搜索工具</p>
+    <h3 id="flexpaper例子">FlexPaper例子</h3>
+    <p>创建html页面test.html，代码如下：<br />
+<img src="/img/1903/03/th/3.png" alt="3" /><br />
+test.html文件以及需要的js，swf文件组织结构如下图所示：<br />
+ <img src="/img/1903/03/th/4.png" alt="4" /><br />
+test.html文件组织结构<br />
+　　显示1.swf文件的效果如下图所示：<br />
+<img src="/img/1903/03/th/5.png" alt="5" /><br />
+FlexPaper下显示Paper.swf效果，可以看到显示效果不错，自动适应页面宽度，且不可打印，不可下载。</p>
+    <h2 id="问题及解决">问题及解决</h2>
+    <h3 id="打印问题">打印问题</h3>
+    <p>将参数中所有toolvisible选项都设置为false，还有PrintEnabled : false，这样久能避免用户打印。</p>
+  </li>
+</ul>
+
+<h3 id="转换为flash时的乱码问题">转换为flash时的乱码问题</h3>
+<p>pdf2swf默认没有多语言支持，直接执行有可能报如下错误：<br />
+Error: Unknown character collection ‘Adobe-GB1’
+Error: Couldn’t find a font for ‘HeiseiMin-W3-90ms-RKSJ-H’
+需要添加xpdf语言包进行支持，步骤如下：<br />
+1.下载语言包，http://www.foolabs.com/xpdf/download.html<br />
+2.以中文为例，解压至C:\App\xpdf\xpdf-chinese-simplified<br />
+修改C:\App\xpdf\xpdf-chinese-simplified\add-to-xpdfrc，将/usr/…的linux路径改为正确的windows路径<br />
+3.新建文件C:\App\xpdf\add-to-xpdfrc，内容为：<br />
+include C:\App\xpdf\xpdf-chinese-simplified\add-to-xpdfrc<br />
+include C:\App\xpdf\xpdf-japanese\add-to-xpdfrc<br />
+4.下载所需的字体，比如日语字体’HeiseiMin-W3-90ms-RKSJ-H’的kochi-mincho-subst.ttf，我在这里下载的。中文在这里。<br />
+5.修改C:\App\xpdf\xpdf-japanese\add-to-xpdfrc，增加一行displayCIDFontTT Adobe-Japan1 C:\App\xpdf\font\kochi-mincho-subst.ttf<br />
+6.测试<br />
+pdf2swf -P root -s languagedir=C:\App\xpdf  “C:\Users\Administrator\Desktop\swftools test\japanese.pdf” -o “C:\Users\Administrator\Desktop\swftools test\x.swf”<br />
+NOTICE  Adding C:\App\xpdf to language pack directories
+NOTICE  processing PDF page 1 (842x595:0:0)
+NOTICE  Writing SWF file C:\Users\Administrator\Desktop\swftools test\x.swf<br />
+没有错误了。</p>
+<h2 id="参考资料">参考资料</h2>
+<p>1 <a href="http://www.bbtang.info/linux/805.html">FlexPaper：使用flash在线展示pdf</a><br />
+2 <a href="http://www.bbtang.info/linux/805.html">解决Linux中swftools转换中文pdf时出现乱码问题</a></p>
+
+
+                <hr>
+
+                
+                <!-- 多说 Share start -->
+                </style>
+                <div class="ds-share"
+                    style="text-align: right"
+                    data-thread-key="/2019/03/25/一种网页PDF展示方案"
+                    data-title="一种pdf展示方案：FLexPaper"
+                    data-url="http://localhost:4000/huxblog-boilerplate/2019/03/25/%E4%B8%80%E7%A7%8D%E7%BD%91%E9%A1%B5PDF%E5%B1%95%E7%A4%BA%E6%96%B9%E6%A1%88/"
+                    data-images="http://localhost:4000/huxblog-boilerplate/img/post-bg-2015.jpg"
+                    data-content="引言
+如果想要在网页中展示PDF，但是不希望他人下载或打印这些PDF，该如何实现呢？在网页中展示PDF有很多方案：
+
+  A、    首先&lt; obj... | SWUFE 奇点工作室学习博客交换站 " >
+                    <div class="ds-share-inline">
+                      <ul  class="ds-share-icons-16">
+                        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
+                        <li><a class="ds-wechat flat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+                        <li><a class="ds-weibo flat" href="javascript:void(0);" data-service="weibo">微博</a></li>
+                        <li><a class="ds-douban flat" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
+                      </ul>
+                      <div class="ds-share-icons-more">
+                      </div>
+                    </div>
+                <hr>
+                </div>
+                <!-- 多说 Share end-->
+                
+
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/huxblog-boilerplate/2019/03/25/Linux-CentOS7%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85python3%E5%B9%B6%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83_rail1000/" data-toggle="tooltip" data-placement="top" title="Linux-CentOS7系统下安装python3并配置环境">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+
+
+                
+                <!-- 多说评论框 start -->
+                <div class="comment">
+                    <div class="ds-thread"
+                        data-thread-key="/2019/03/25/一种网页PDF展示方案"
+                        data-title="一种pdf展示方案：FLexPaper"
+                        data-url="http://localhost:4000/huxblog-boilerplate/2019/03/25/%E4%B8%80%E7%A7%8D%E7%BD%91%E9%A1%B5PDF%E5%B1%95%E7%A4%BA%E6%96%B9%E6%A1%88/" >
+                    </div>
+                </div>
+                <!-- 多说评论框 end -->
+                
+
+                
+
+            </div>
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+                				<a href="/huxblog-boilerplate/tags/#前端" title="前端" rel="2">
+                                    前端
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/huxblog-boilerplate/tags/#python" title="python" rel="3">
+                                    python
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/huxblog-boilerplate/tags/#后端" title="后端" rel="3">
+                                    后端
+                                </a>
+                            
+        				
+                            
+                				<a href="/huxblog-boilerplate/tags/#服务器" title="服务器" rel="3">
+                                    服务器
+                                </a>
+                            
+        				
+                            
+                				<a href="/huxblog-boilerplate/tags/#JavaScript" title="JavaScript" rel="2">
+                                    JavaScript
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="https://it.swufe.edu.cn">经济信息工程学院</a></li>
+                    
+                        <li><a href="https://github.com">GitHub</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User by Hux
+    var _user = 'huxblog';
+
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center">
+          
+          <li>
+            <a href="/huxblog-boilerplate/feed.xml">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+
+          <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+          
+          
+
+
+          
+          
+          <li>
+            <a target="_blank" href="https://github.com/singularity-lab">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="copyright text-muted">
+          Copyright &copy; SWUFE 奇点工作室学习博客交换站 2019
+          <br>
+          Theme by <a href="http://huangxuan.me">Hux</a> |
+          <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px" height="20px" src="https://ghbtns.com/github-btn.html?user=singularity-lab&repo=Blog-Share&type=star&count=true">
+          </iframe>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/huxblog-boilerplate/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/huxblog-boilerplate/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/huxblog-boilerplate/js/hux-blog.min.js "></script>
+
+
+<!-- async load function -->
+<script>
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+  // only load tagcloud.js in tag.html
+  if ($('#tag_cloud').length !== 0) {
+    async ("/js/jquery.tagcloud.js", function() {
+      $.fn.tagcloud.defaults = {
+        //size: {start: 1, end: 1, unit: 'em'},
+        color: {
+          start: '#bbbbee',
+          end: '#0085a1'
+        },
+      };
+      $('#tag_cloud a').tagcloud();
+    })
+  }
+</script>
+
+<!--fastClick.js -->
+<script>
+  async ("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function() {
+    var $nav = document.querySelector("nav");
+    if ($nav) FastClick.attach($nav);
+  })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+  // dynamic User by Hux
+  var _gaId = 'UA-49627206-1';
+  var _gaDomain = 'huangxuan.me';
+
+  // Originial
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', _gaId, _gaDomain);
+  ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+  // dynamic User by Hux
+  var _baId = '4cc1f2d8f3067386cc5cdb626a202900';
+
+  // Originial
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?" + _baId;
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

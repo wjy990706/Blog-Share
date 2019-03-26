@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="为切实提高工作室成员的学习积极性、涉猎宽度及思考的深度，从本学期开始，奇点工作室倡议每位成员每周至少完成一篇博客的写作及分享。涉及计算机基础理论、数学学习、数据分析、网站开发、网页设计、金融科技等等方面的学习经历和收获，也有相互之间的交流与讨论。当然，我们非常欢迎工作室之外的朋友们对我们的思考和学习笔记提出指正意见，也希望更多志同道合的朋友可以参与到我们这一次的尝试与努力中来，我们愿意相信，一个人走得快，一群人走得远，希望我们可以在柳湖旁一起建造一片GEEK之林！">
+    <meta name="keyword"  content="SWUFE, 奇点工作室, Singularity, singularity, Singularitylab, Singularity-lab, 技术, 博客">
+    <link rel="shortcut icon" href="/huxblog-boilerplate/img/favicon.ico">
+
+    <title>当我们说起 MVC 时，我们在谈什么 - SWUFE 奇点工作室学习博客交换站</title>
+
+    <link rel="canonical" href="http://localhost:4000/huxblog-boilerplate/2019/03/23/%E5%BD%93%E6%88%91%E4%BB%AC%E8%AF%B4%E8%B5%B7-MVC-%E6%97%B6-%E6%88%91%E4%BB%AC%E5%9C%A8%E8%B0%88%E4%BB%80%E4%B9%88/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/huxblog-boilerplate/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/huxblog-boilerplate/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/huxblog-boilerplate/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/huxblog-boilerplate/">SWUFE 奇点工作室学习博客交换站</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/huxblog-boilerplate/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/huxblog-boilerplate/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/huxblog-boilerplate/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/huxblog-boilerplate/img/post-bg-2015.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/huxblog-boilerplate/img/post-bg-2015.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/huxblog-boilerplate/tags/#前端" title="前端">前端</a>
+                        
+                        <a class="tag" href="/huxblog-boilerplate/tags/#MVC" title="MVC">MVC</a>
+                        
+                        <a class="tag" href="/huxblog-boilerplate/tags/#架构" title="架构">架构</a>
+                        
+                    </div>
+                    <h1>当我们说起 MVC 时，我们在谈什么</h1>
+                    
+                    
+                    <h2 class="subheading"></h2>
+                    
+                    <span class="meta">Posted by 李楸柯 on March 23, 2019</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+				<p>我们都知道，MVC 对应着三个名词：模型（Model）、视图（View）和控制器（Controller）。但是，在我们每次遇到 MVC 这个专有名词的时候，我们说的是同一个东西吗？</p>
+
+<h2 id="什么是-mvc">什么是 MVC</h2>
+
+<p>我们先来看看维基百科关于 MVC 的定义吧：</p>
+
+<blockquote>
+  <ul>
+    <li>模型（Model）：用于封装与应用程序的业务逻辑相关的数据以及对数据的处理方法。“ Model ”有对数据直接访问的权力，例如对数据库的访问。“Model”不依赖“View”和“Controller”，也就是说， Model 不关心它会被如何显示或是如何被操作。但是 Model 中数据的变化一般会通过一种刷新机制被公布。为了实现这种机制，那些用于监视此 Model 的 View 必须事先在此 Model 上注册，从而，View 可以了解在数据 Model 上发生的改变。（比如：观察者模式（软件设计模式））</li>
+    <li>视图（View）：能够实现数据有目的的显示（理论上，这不是必需的）。在 View 中一般没有程序上的逻辑。为了实现 View 上的刷新功能，View 需要访问它监视的数据模型（Model），因此应该事先在被它监视的数据那里注册。</li>
+    <li>控制器（Controller）：起到不同层面间的组织作用，用于控制应用程序的流程。它处理事件并作出响应。“事件”包括用户的行为和数据 Model 上的改变。</li>
+  </ul>
+
+  <p>——来自维基百科</p>
+</blockquote>
+
+<p>这个定义似乎跟我们平常所接触的 MVC 不同，最大的区别来自于这一句：</p>
+
+<blockquote>
+  <p>但是 Model 中数据的变化一般会通过一种刷新机制被公布。为了实现这种机制，那些用于监视此 Model 的 View 必须事先在此 Model 上注册</p>
+</blockquote>
+
+<p>在我们平常接触到的 MVC 中，Model 与 View 之间似乎并没有直接的互动，数据的更新一般是通过 Controller 来完成的。Controller 接收用户的请求与参数，并与 Model 交换数据，再把最新的结果交还给 View。而 View 的作用只是为用户展示页面，并把用户操作转交给 Controller 处理而已。在 MVC 的定义中，Model 和 View 却需要进行直接交互。</p>
+
+<h2 id="那常见的那个-mvc-是什么">那常见的那个 MVC 是什么？</h2>
+
+<p>其实我们常用的 MVC 并不是真正的 MVC，而是 Sun Microsystems 在 1998 年发布的 Model 2，全称为”JSP Model 2 Architecture”，也可以被称作”MVC Model 2”。由于 Model 2 没有中文维基百科页面，我们只能看看英文定义了。</p>
+
+<blockquote>
+  <p>In a Model 2 application, requests from the client browser are passed to the controller. The controller performs any logic necessary to obtain the correct content for display. It then places the content in the request (commonly in the form of a JavaBean or POJO) and decides which view it will pass the request to. The view then renders the content passed by the controller.</p>
+</blockquote>
+
+<p>这段话的大概意思是：使用 Model 2 的应用中，用户经由浏览器发送的请求会被转发给 Controller， Controller 进行必要的程序后，把内容提供给 View，由 View 来渲染页面。</p>
+
+<p>这就跟我们所熟知那个”MVC”了。</p>
+
+<h2 id="细分-mvc-model-2-的各部分功能">细分 MVC Model 2 的各部分功能</h2>
+
+<ul>
+  <li>View：主要负责显示。不具有行为，只是等待 Controller 提供内容来渲染。</li>
+  <li>Model：主要负责数据与模型。接收 Controller 发送的请求与参数，回传结果，必要时与数据库交换数据。</li>
+  <li>Controller：主要负责交互与业务。接收请求与参数，转发给 Model，并把回传结果提供给 View 渲染。</li>
+</ul>
+
+<h2 id="前端与后端提到的-mvc-是一样的吗">前端与后端提到的 MVC 是一样的吗？</h2>
+
+<p>随着前端的不断发展，代码的糟糕组织方式逐渐被淘汰，取而代之的是各种框架，比如：Vue.js，Angular 和 React 等。他们无一例外的都采用了 MVC 模式来组织代码，以获得清晰的代码结构和良好的开发体验。那么前后端的 MVC 是一样的吗？</p>
+
+<p>前端 MVC 是建立在前后端分离的基础上的。随着互联网时代的发展，用户体验越来越受到重视，与用户面对面的前端就显得尤为重要，前端代码也就越来越复杂。</p>
+
+<p>于是前端也逐渐采用了 MVC 的开发模式，通过 API 与后端交互。以一图展示：</p>
+
+<p><img src="/img/1903/03/Hivol/image-20190322165741902.png" alt="image-20190322165741902" /></p>
+
+<p>前端接管了后端的 View 层，并在此基础上采用了 MVC 的开发模式。在前端中：</p>
+
+<ul>
+  <li>Model：保存每个页面中单独的数据，主要是 json 格式。</li>
+  <li>View：模版引擎或模版片段，也就是 HTML 代码。</li>
+  <li>Controller：也被称作 VM，是 Model 层和 View 层的调度者。也会负责 HTTP 请求交互和一些业务逻辑。</li>
+</ul>
+
+<h2 id="总结">总结</h2>
+
+<ol>
+  <li>我们经常提到的 MVC 其实是 MVC Model 2。</li>
+  <li>前端的 MVC 属于后端的 MVC 中的 View 层。</li>
+  <li>无论前端后端，将代码用 MVC 的形式组织起来都利于开发、维护和协作。</li>
+</ol>
+
+<h2 id="参考资料">参考资料</h2>
+
+<ol>
+  <li><a href="https://zh.wikipedia.org/wiki/MVC">MVC - 维基百科，自由的百科全书</a></li>
+  <li><a href="https://zh.wikipedia.org/wiki/MVVM">MVVM - 维基百科，自由的百科全书</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/JSP_model_2_architecture">JSP model 2 architecture</a></li>
+</ol>
+
+
+                <hr>
+
+                
+                <!-- 多说 Share start -->
+                </style>
+                <div class="ds-share"
+                    style="text-align: right"
+                    data-thread-key="/2019/03/23/当我们说起 MVC 时，我们在谈什么"
+                    data-title="当我们说起 MVC 时，我们在谈什么"
+                    data-url="http://localhost:4000/huxblog-boilerplate/2019/03/23/%E5%BD%93%E6%88%91%E4%BB%AC%E8%AF%B4%E8%B5%B7-MVC-%E6%97%B6-%E6%88%91%E4%BB%AC%E5%9C%A8%E8%B0%88%E4%BB%80%E4%B9%88/"
+                    data-images="http://localhost:4000/huxblog-boilerplate/img/post-bg-2015.jpg"
+                    data-content="我们都知道，MVC 对应着三个名词：模型（Model）、视图（View）和控制器（Controller）。但是，在我们每次遇到 MVC 这个专有名词的时候... | SWUFE 奇点工作室学习博客交换站 " >
+                    <div class="ds-share-inline">
+                      <ul  class="ds-share-icons-16">
+                        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
+                        <li><a class="ds-wechat flat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+                        <li><a class="ds-weibo flat" href="javascript:void(0);" data-service="weibo">微博</a></li>
+                        <li><a class="ds-douban flat" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
+                      </ul>
+                      <div class="ds-share-icons-more">
+                      </div>
+                    </div>
+                <hr>
+                </div>
+                <!-- 多说 Share end-->
+                
+
+
+                <ul class="pager">
+                    
+                    
+                    <li class="next">
+                        <a href="/huxblog-boilerplate/2019/03/23/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E4%B8%A4%E7%82%B9%E6%B3%A8%E6%84%8F/" data-toggle="tooltip" data-placement="top" title="网页设计两点注意">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+
+                
+                <!-- 多说评论框 start -->
+                <div class="comment">
+                    <div class="ds-thread"
+                        data-thread-key="/2019/03/23/当我们说起 MVC 时，我们在谈什么"
+                        data-title="当我们说起 MVC 时，我们在谈什么"
+                        data-url="http://localhost:4000/huxblog-boilerplate/2019/03/23/%E5%BD%93%E6%88%91%E4%BB%AC%E8%AF%B4%E8%B5%B7-MVC-%E6%97%B6-%E6%88%91%E4%BB%AC%E5%9C%A8%E8%B0%88%E4%BB%80%E4%B9%88/" >
+                    </div>
+                </div>
+                <!-- 多说评论框 end -->
+                
+
+                
+
+            </div>
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+                				<a href="/huxblog-boilerplate/tags/#前端" title="前端" rel="2">
+                                    前端
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/huxblog-boilerplate/tags/#python" title="python" rel="3">
+                                    python
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/huxblog-boilerplate/tags/#后端" title="后端" rel="3">
+                                    后端
+                                </a>
+                            
+        				
+                            
+                				<a href="/huxblog-boilerplate/tags/#服务器" title="服务器" rel="3">
+                                    服务器
+                                </a>
+                            
+        				
+                            
+                				<a href="/huxblog-boilerplate/tags/#JavaScript" title="JavaScript" rel="2">
+                                    JavaScript
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="https://it.swufe.edu.cn">经济信息工程学院</a></li>
+                    
+                        <li><a href="https://github.com">GitHub</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User by Hux
+    var _user = 'huxblog';
+
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center">
+          
+          <li>
+            <a href="/huxblog-boilerplate/feed.xml">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+
+          <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+          
+          
+
+
+          
+          
+          <li>
+            <a target="_blank" href="https://github.com/singularity-lab">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="copyright text-muted">
+          Copyright &copy; SWUFE 奇点工作室学习博客交换站 2019
+          <br>
+          Theme by <a href="http://huangxuan.me">Hux</a> |
+          <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px" height="20px" src="https://ghbtns.com/github-btn.html?user=singularity-lab&repo=Blog-Share&type=star&count=true">
+          </iframe>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/huxblog-boilerplate/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/huxblog-boilerplate/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/huxblog-boilerplate/js/hux-blog.min.js "></script>
+
+
+<!-- async load function -->
+<script>
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+  // only load tagcloud.js in tag.html
+  if ($('#tag_cloud').length !== 0) {
+    async ("/js/jquery.tagcloud.js", function() {
+      $.fn.tagcloud.defaults = {
+        //size: {start: 1, end: 1, unit: 'em'},
+        color: {
+          start: '#bbbbee',
+          end: '#0085a1'
+        },
+      };
+      $('#tag_cloud a').tagcloud();
+    })
+  }
+</script>
+
+<!--fastClick.js -->
+<script>
+  async ("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function() {
+    var $nav = document.querySelector("nav");
+    if ($nav) FastClick.attach($nav);
+  })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+  // dynamic User by Hux
+  var _gaId = 'UA-49627206-1';
+  var _gaDomain = 'huangxuan.me';
+
+  // Originial
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', _gaId, _gaDomain);
+  ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+  // dynamic User by Hux
+  var _baId = '4cc1f2d8f3067386cc5cdb626a202900';
+
+  // Originial
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?" + _baId;
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
