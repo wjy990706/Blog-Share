@@ -3,10 +3,10 @@
   <channel>
     <title>SWUFE 奇点工作室学习博客交换站</title>
     <description>为切实提高工作室成员的学习积极性、涉猎宽度及思考的深度，从本学期开始，奇点工作室倡议每位成员每周至少完成一篇博客的写作及分享。涉及计算机基础理论、数学学习、数据分析、网站开发、网页设计、金融科技等等方面的学习经历和收获，也有相互之间的交流与讨论。当然，我们非常欢迎工作室之外的朋友们对我们的思考和学习笔记提出指正意见，也希望更多志同道合的朋友可以参与到我们这一次的尝试与努力中来，我们愿意相信，一个人走得快，一群人走得远，希望我们可以在柳湖旁一起建造一片GEEK之林！</description>
-    <link>http://localhost:4000/huxblog-boilerplate/</link>
-    <atom:link href="http://localhost:4000/huxblog-boilerplate/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 27 Mar 2019 01:59:39 +0800</pubDate>
-    <lastBuildDate>Wed, 27 Mar 2019 01:59:39 +0800</lastBuildDate>
+    <link>http://localhost:4000/Share-Blog/</link>
+    <atom:link href="http://localhost:4000/Share-Blog/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Wed, 27 Mar 2019 02:14:44 +0800</pubDate>
+    <lastBuildDate>Wed, 27 Mar 2019 02:14:44 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -111,8 +111,8 @@ NOTICE  Writing SWF file C:\Users\Administrator\Desktop\swftools test\x.swf&lt;b
 2 &lt;a href=&quot;http://www.bbtang.info/linux/805.html&quot;&gt;解决Linux中swftools转换中文pdf时出现乱码问题&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 25 Mar 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/huxblog-boilerplate/2019/03/25/%E4%B8%80%E7%A7%8D%E7%BD%91%E9%A1%B5PDF%E5%B1%95%E7%A4%BA%E6%96%B9%E6%A1%88/</link>
-        <guid isPermaLink="true">http://localhost:4000/huxblog-boilerplate/2019/03/25/%E4%B8%80%E7%A7%8D%E7%BD%91%E9%A1%B5PDF%E5%B1%95%E7%A4%BA%E6%96%B9%E6%A1%88/</guid>
+        <link>http://localhost:4000/Share-Blog/2019/03/25/%E4%B8%80%E7%A7%8D%E7%BD%91%E9%A1%B5PDF%E5%B1%95%E7%A4%BA%E6%96%B9%E6%A1%88/</link>
+        <guid isPermaLink="true">http://localhost:4000/Share-Blog/2019/03/25/%E4%B8%80%E7%A7%8D%E7%BD%91%E9%A1%B5PDF%E5%B1%95%E7%A4%BA%E6%96%B9%E6%A1%88/</guid>
         
         <category>pdf</category>
         
@@ -174,8 +174,8 @@ NOTICE  Writing SWF file C:\Users\Administrator\Desktop\swftools test\x.swf&lt;b
 &lt;p&gt;之后python3就算安装成功了&lt;/p&gt;
 </description>
         <pubDate>Mon, 25 Mar 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/huxblog-boilerplate/2019/03/25/Linux-CentOS7%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85python3%E5%B9%B6%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83_rail1000/</link>
-        <guid isPermaLink="true">http://localhost:4000/huxblog-boilerplate/2019/03/25/Linux-CentOS7%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85python3%E5%B9%B6%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83_rail1000/</guid>
+        <link>http://localhost:4000/Share-Blog/2019/03/25/Linux-CentOS7%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85python3%E5%B9%B6%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83_rail1000/</link>
+        <guid isPermaLink="true">http://localhost:4000/Share-Blog/2019/03/25/Linux-CentOS7%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85python3%E5%B9%B6%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83_rail1000/</guid>
         
         <category>python</category>
         
@@ -395,8 +395,8 @@ NOTICE  Writing SWF file C:\Users\Administrator\Desktop\swftools test\x.swf&lt;b
 &lt;/ol&gt;
 </description>
         <pubDate>Mon, 25 Mar 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/huxblog-boilerplate/2019/03/25/HTTP-HTTPS-(SSL&TLS)/</link>
-        <guid isPermaLink="true">http://localhost:4000/huxblog-boilerplate/2019/03/25/HTTP-HTTPS-(SSL&TLS)/</guid>
+        <link>http://localhost:4000/Share-Blog/2019/03/25/HTTP-HTTPS-(SSL&TLS)/</link>
+        <guid isPermaLink="true">http://localhost:4000/Share-Blog/2019/03/25/HTTP-HTTPS-(SSL&TLS)/</guid>
         
         <category>网络</category>
         
@@ -853,8 +853,8 @@ vacuum=true
 &lt;/ol&gt;
 </description>
         <pubDate>Sun, 24 Mar 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/huxblog-boilerplate/2019/03/24/Django%E9%A1%B9%E7%9B%AE%E4%B8%8A%E7%BA%BF%E9%83%A8%E7%BD%B2%E5%85%A8%E6%B5%81%E7%A8%8B/</link>
-        <guid isPermaLink="true">http://localhost:4000/huxblog-boilerplate/2019/03/24/Django%E9%A1%B9%E7%9B%AE%E4%B8%8A%E7%BA%BF%E9%83%A8%E7%BD%B2%E5%85%A8%E6%B5%81%E7%A8%8B/</guid>
+        <link>http://localhost:4000/Share-Blog/2019/03/24/Django%E9%A1%B9%E7%9B%AE%E4%B8%8A%E7%BA%BF%E9%83%A8%E7%BD%B2%E5%85%A8%E6%B5%81%E7%A8%8B/</link>
+        <guid isPermaLink="true">http://localhost:4000/Share-Blog/2019/03/24/Django%E9%A1%B9%E7%9B%AE%E4%B8%8A%E7%BA%BF%E9%83%A8%E7%BD%B2%E5%85%A8%E6%B5%81%E7%A8%8B/</guid>
         
         <category>python</category>
         
@@ -960,8 +960,8 @@ style=&quot;color:#fbfcfc;&quot;&amp;gt;&amp;amp;nbsp;&amp;amp;nbsp;+C++&amp;lt;
 &lt;/ol&gt;
 </description>
         <pubDate>Sun, 24 Mar 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/huxblog-boilerplate/2019/03/24/%E9%BC%A0%E6%A0%87%E7%9A%84hover%E4%BA%8B%E4%BB%B6/</link>
-        <guid isPermaLink="true">http://localhost:4000/huxblog-boilerplate/2019/03/24/%E9%BC%A0%E6%A0%87%E7%9A%84hover%E4%BA%8B%E4%BB%B6/</guid>
+        <link>http://localhost:4000/Share-Blog/2019/03/24/%E9%BC%A0%E6%A0%87%E7%9A%84hover%E4%BA%8B%E4%BB%B6/</link>
+        <guid isPermaLink="true">http://localhost:4000/Share-Blog/2019/03/24/%E9%BC%A0%E6%A0%87%E7%9A%84hover%E4%BA%8B%E4%BB%B6/</guid>
         
         <category>前端</category>
         
@@ -1061,8 +1061,8 @@ RewriteRule ^(.*)?$ https://%{SERVER_NAME}%{REQUEST_URI} [L,R]&lt;/p&gt;
 &lt;/ol&gt;
 </description>
         <pubDate>Sun, 24 Mar 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/huxblog-boilerplate/2019/03/24/Apache%E9%85%8D%E7%BD%AEhttps%E8%AE%BF%E9%97%AE%E5%8F%8A%E8%B7%B3%E8%BD%AC/</link>
-        <guid isPermaLink="true">http://localhost:4000/huxblog-boilerplate/2019/03/24/Apache%E9%85%8D%E7%BD%AEhttps%E8%AE%BF%E9%97%AE%E5%8F%8A%E8%B7%B3%E8%BD%AC/</guid>
+        <link>http://localhost:4000/Share-Blog/2019/03/24/Apache%E9%85%8D%E7%BD%AEhttps%E8%AE%BF%E9%97%AE%E5%8F%8A%E8%B7%B3%E8%BD%AC/</link>
+        <guid isPermaLink="true">http://localhost:4000/Share-Blog/2019/03/24/Apache%E9%85%8D%E7%BD%AEhttps%E8%AE%BF%E9%97%AE%E5%8F%8A%E8%B7%B3%E8%BD%AC/</guid>
         
         <category>Apache</category>
         
@@ -1164,8 +1164,8 @@ conda remove -n myenv scipy （删除指定环境中的指定包）&lt;/p&gt;
 &lt;/ol&gt;
 </description>
         <pubDate>Sun, 24 Mar 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/huxblog-boilerplate/2019/03/24/Anaconda-%E5%B8%B8%E7%94%A8%E7%9A%84conda%E5%91%BD%E4%BB%A4/</link>
-        <guid isPermaLink="true">http://localhost:4000/huxblog-boilerplate/2019/03/24/Anaconda-%E5%B8%B8%E7%94%A8%E7%9A%84conda%E5%91%BD%E4%BB%A4/</guid>
+        <link>http://localhost:4000/Share-Blog/2019/03/24/Anaconda-%E5%B8%B8%E7%94%A8%E7%9A%84conda%E5%91%BD%E4%BB%A4/</link>
+        <guid isPermaLink="true">http://localhost:4000/Share-Blog/2019/03/24/Anaconda-%E5%B8%B8%E7%94%A8%E7%9A%84conda%E5%91%BD%E4%BB%A4/</guid>
         
         <category>python</category>
         
@@ -1192,8 +1192,8 @@ conda remove -n myenv scipy （删除指定环境中的指定包）&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Sat, 23 Mar 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/huxblog-boilerplate/2019/03/23/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E4%B8%A4%E7%82%B9%E6%B3%A8%E6%84%8F/</link>
-        <guid isPermaLink="true">http://localhost:4000/huxblog-boilerplate/2019/03/23/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E4%B8%A4%E7%82%B9%E6%B3%A8%E6%84%8F/</guid>
+        <link>http://localhost:4000/Share-Blog/2019/03/23/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E4%B8%A4%E7%82%B9%E6%B3%A8%E6%84%8F/</link>
+        <guid isPermaLink="true">http://localhost:4000/Share-Blog/2019/03/23/%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E4%B8%A4%E7%82%B9%E6%B3%A8%E6%84%8F/</guid>
         
         <category>设计</category>
         
@@ -1281,8 +1281,8 @@ conda remove -n myenv scipy （删除指定环境中的指定包）&lt;/p&gt;
 &lt;/ol&gt;
 </description>
         <pubDate>Sat, 23 Mar 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/huxblog-boilerplate/2019/03/23/%E5%BD%93%E6%88%91%E4%BB%AC%E8%AF%B4%E8%B5%B7-MVC-%E6%97%B6-%E6%88%91%E4%BB%AC%E5%9C%A8%E8%B0%88%E4%BB%80%E4%B9%88/</link>
-        <guid isPermaLink="true">http://localhost:4000/huxblog-boilerplate/2019/03/23/%E5%BD%93%E6%88%91%E4%BB%AC%E8%AF%B4%E8%B5%B7-MVC-%E6%97%B6-%E6%88%91%E4%BB%AC%E5%9C%A8%E8%B0%88%E4%BB%80%E4%B9%88/</guid>
+        <link>http://localhost:4000/Share-Blog/2019/03/23/%E5%BD%93%E6%88%91%E4%BB%AC%E8%AF%B4%E8%B5%B7-MVC-%E6%97%B6-%E6%88%91%E4%BB%AC%E5%9C%A8%E8%B0%88%E4%BB%80%E4%B9%88/</link>
+        <guid isPermaLink="true">http://localhost:4000/Share-Blog/2019/03/23/%E5%BD%93%E6%88%91%E4%BB%AC%E8%AF%B4%E8%B5%B7-MVC-%E6%97%B6-%E6%88%91%E4%BB%AC%E5%9C%A8%E8%B0%88%E4%BB%80%E4%B9%88/</guid>
         
         <category>前端</category>
         
