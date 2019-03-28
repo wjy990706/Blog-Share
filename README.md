@@ -13,22 +13,24 @@
 ## 格式规范
 
 1. 文章中请包含：名字或昵称、日期、标签（如，Django, 网络协议，机器学习算法，数据分析实践，Python等等）
-2. 文章命名：{日期yyyy-mm-dd}-{文章标题}，如：2019-03-04-在Console中添加字符画
-3. 图片等静态资源请放置于：img/[年月]/[周数]/[名字/昵称]，如：img/1903/04/Hivol/
-4. markdown 文件中引用图片时，请使用绝对路径。如：/Blog-Share/img/1903/04/Hivol/hello.png
-5. 使用 UTF-8 编码
-6. **文末请注明参考文章及链接**
-7. Commit三要素：Theme, Summary and Details
+2. 文章命名： `{日期yyyy-mm-dd}-{文章标题}` ，如： `2019-03-04-在Console中添加字符画`
+3. 图片等静态资源请放置于： `img/[年月]/[周数]/[名字/昵称]` ，如： `img/1903/04/Hivol/`
+4. Markdown 文件中引用图片时，请使用绝对路径。如： `/Blog-Share/img/1903/04/Hivol/hello.png`
+5. Markdown 文件中也请注意可读性与美观性，建议在标题前后、段落前后和图片前后均空一行
+6. 使用 UTF-8 编码
+7. 每篇博文中都有一个 `header` 部分，请参考现有博客填写相应的条目
+8. Commit三要素：Theme, Summary and Details。Commit Summary 的格式为： `{年月周}-{文章标题}-{姓名}` ，如：190304-Django项目上线部署全流程-LKX
+9. **文末请注明参考文章及链接**
 
 ## 怎样上传新文章？
 
-Step 1. Fork 本项目得到 nickname/Blog-Share（此处的“nickname”即是各位自己的用户名）
+Step 1. Fork 本项目得到 `nickname/Blog-Share` （此处的“nickname”即是各位自己的用户名）
 
-Step 2. Clone 你的仓库到本地电脑得到 local/Blog-Share
+Step 2. Clone 你的仓库到本地电脑得到 `local/Blog-Share`
 
-Step 3. 在本地仓库中编写你的文章，写完后 commit
+Step 3. 在本地仓库中编写你的文章，写完后 commit（ ⚠️ 注意：blog 在 `_posts` 文件夹下，图片在 `img` 文件夹下）
 
-Step 4. push local/Blog-Share 到 nickname/Blog-Share
+Step 4. push `local/Blog-Share` 到 `nickname/Blog-Share`
 
 Step 5. 提交一个 pull request，等待review
 
