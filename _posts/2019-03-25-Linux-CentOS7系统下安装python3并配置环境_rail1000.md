@@ -1,11 +1,15 @@
-#        Linux-CentOS7系统下安装python3并配置环境
-
-作者：桂志强
-
-时间：2019/3/25    
-
-主题：Python，Linux
-
+---
+layout:     post
+title:      "Linux-CentOS7系统下安装python3并配置环境"
+date:       2019-03-25
+author:     "桂志强"
+header-img: "img/post-bg-2015.jpg"
+tags:
+    - python
+    - Linux
+    - 后端
+    - 服务器
+---
 
 
 首先，因为centos7以上的系统已经安装了python2，所以，如果直接安装python3的话，之后会出现一系列的问题，所以需要修改环境

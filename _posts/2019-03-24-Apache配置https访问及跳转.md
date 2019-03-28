@@ -1,8 +1,16 @@
-# Apache配置https访问及跳转
+---
+layout:     post
+title:      "Apache 配置 https 访问及跳转"
+date:       2019-03-24
+author:     "Cathandra"
+header-img: "img/post-bg-2015.jpg"
+tags:
+    - Apache
+    - https
+    - 后端
+    - 服务器
+---
 
-Author: Cathandra
-
-Date: 2019/3/24
 
 这星期为Apache服务器安装了https，过程和以前用Tomcat的有很大差别。记笔记总结一下。
 ## 环境
@@ -29,7 +37,7 @@ Date: 2019/3/24
  LoadModule ssl_module modules/mod_ssl.so
  LoadModule socache_dbm_module modules/mod_socache_dbm.so
  LoadModule socache_shmcb_module modules/mod_socache_shmcb.so
- Include conf/extra/httpd-ssl.conf 
+ Include conf/extra/httpd-ssl.conf
 
 ```
 3. 编辑 `Apache/conf/extra/` 下的文件 `httpd-ssl.conf`  
@@ -38,7 +46,7 @@ Date: 2019/3/24
 
 SSLCipherSuite HIGH:MEDIUM:!SSLv3:!####
 SSLProxyCipherSuite HIGH:MEDIUM:!SSLv3:!####
-SSLHonorCipherOrder on 
+SSLHonorCipherOrder on
 SSLProtocol all -SSLv3
 SSLProxyProtocol all -SSLv3
 SSLPassPhraseDialog  builtin
@@ -72,7 +80,7 @@ tail -f apache/logs/error_log
 ## 配置重定向
 1. 编辑 `Apache/conf` 下的 `httpd.conf` 文件，取消以下代码的前的注释符号：  
 ```
- LoadModule rewrite_module modules/mod_rewrite.so 
+ LoadModule rewrite_module modules/mod_rewrite.so
 ```
 2. 编辑 `Apache/conf` 下的 `httpd.conf` 文件，在 `<VirtualHost *:80>`标签下添加以下代码：
 ```

@@ -1,8 +1,14 @@
-# HTTP—>HTTPS (SSL/TLS)
+---
+layout:     post
+title:      "HTTP—>HTTPS (SSL/TLS)"
+date:       2019-03-25
+author:     "iyin"
+header-img: "img/post-bg-2015.jpg"
+tags:
+    - 网络
+    - HTTP
+---
 
-Author: iyin
-
-Date: 2019/3/23
 
 HTTP（HyperText Transfer Protocol）作为一种无状态的、简单快速的、基于 TCP的”可靠“传输协议。它是否足够安全呢？与HTTPS又有什么关系呢？
 
@@ -24,11 +30,11 @@ HTTP（HyperText Transfer Protocol）作为一种无状态的、简单快速的�
 
   ps: 抓包可看到使用http传输的图片信息（第四行）：
 
-  > ![1553445596865](assets/03/03/iyiniyin/1553445596865.png)
+  > ![1553445596865](/Blog-Share/img/1903/03/iyiniyin/1553445596865.png)
 
   把他的图片给改了：
 
-  ![1553452062737](assets/03/03/iyiniyin/1553452062737.png)
+  ![1553452062737](/Blog-Share/img/1903/03/iyiniyin/1553452062737.png)
 
 ### 2. 给HTTP加一把锁—>HTTPS
 
@@ -56,7 +62,7 @@ HTTP（HyperText Transfer Protocol）作为一种无状态的、简单快速的�
 
   **它指定了一种在应用程序协议（如Http、Telenet、NMTP和FTP等）和TCP/IP协议之间提供数据安全性分层的机制。** 示意图：
 
-  > ![1553446400295](assets/03/03/iyiniyin/1553446400295.png)
+  > ![1553446400295](/Blog-Share/img/1903/03/iyiniyin/1553446400295.png)
   >
   > (from csdn)
 
@@ -68,7 +74,7 @@ HTTP（HyperText Transfer Protocol）作为一种无状态的、简单快速的�
 
   位于底层的TLS记录协议负责进行加密，而位于上层的TLS握手协议负责除了加密以外的其他各种操作，上层又可以分为4个子协议。如下图所示：
 
-  ![1553447868551](assets/03/03/iyiniyin/1553447868551.png)
+  ![1553447868551](/Blog-Share/img/1903/03/iyiniyin/1553447868551.png)
 
   (from wiki)
 
@@ -86,7 +92,7 @@ HTTP（HyperText Transfer Protocol）作为一种无状态的、简单快速的�
 
     其中，著名的客户端与服务器**握手过程**如下图所示（本图为个人理解的顺序和过程，其中，服务器必须认证客户端，但是客户端可以不要求服务器发送证书，如果要求，就是双向认证。ps:其实交换密钥的过程也是变相的身份认证了吧）：
 
-    ![1553448792562](assets/03/03/iyiniyin/1553448792562.png)
+    ![1553448792562](/Blog-Share/img/1903/03/iyiniyin/1553448792562.png)
 
     简单来说，本过程结束后，客户机与服务器选择了双方都支持的密码算法，生成了共享密钥，完成了身份认证，从而可以建立加密TSL连接。
 
@@ -96,7 +102,7 @@ HTTP（HyperText Transfer Protocol）作为一种无状态的、简单快速的�
 
     > 其中添加的MAC是消息认证码，用于接收方验证消息是否真的是对方产生的。
     >
-    > ![1553449674281](assets/03/03/iyiniyin/1553449674281.png)
+    > ![1553449674281](/Blog-Share/img/1903/03/iyiniyin/1553449674281.png)
     >
     > (from csdn)
 
@@ -108,13 +114,13 @@ HTTP（HyperText Transfer Protocol）作为一种无状态的、简单快速的�
 
 用open ssl库进行了基于TSL的socket通讯过程模拟，部分输出：
 
-> ![1553451193044](assets/03/03/iyiniyin/1553451193044.png)
+> ![1553451193044](/Blog-Share/img/1903/03/iyiniyin/1553451193044.png)
 
-> ![1553451209002](assets/03/03/iyiniyin/1553451209002.png)
+> ![1553451209002](/Blog-Share/img/1903/03/iyiniyin/1553451209002.png)
 
-> ![1553451232281](assets/03/03/iyiniyin/1553451232281.png)
+> ![1553451232281](/Blog-Share/img/1903/03/iyiniyin/1553451232281.png)
 
-> ![1553451240335](assets/03/03/iyiniyin/1553451240335.png)
+> ![1553451240335](/Blog-Share/img/1903/03/iyiniyin/1553451240335.png)
 
 ## 补充与总结
 
@@ -137,10 +143,9 @@ HTTP（HyperText Transfer Protocol）作为一种无状态的、简单快速的�
    > - 伪随机数生成器：生成预备主密码；根据主密码生成密钥（密码参数）；生成初始化向量。
 
    > * 对称密码（CBC模式）：确保片段的机密性
-   > * 消息认证码：确保片段的完整性并进行认证 
+   > * 消息认证码：确保片段的完整性并进行认证
    > * 认证加密（AEAD）：确保片段的完整性和机密性并进行认证
 
 5. 知乎上有老哥对握手过程的理解...
 
-   ![1553451931548](assets/03/03/iyiniyin/1553451931548.png)
-
+   ![1553451931548](/Blog-Share/img/1903/03/iyiniyin/1553451931548.png)
