@@ -1,6 +1,15 @@
-| layout | title                     | date       | author | header-img                                         | tag                 |
-|:------:|:-------------------------:|:----------:|:------:|:--------------------------------------------------:|:-------------------:|
-| post   | 在CentOS 7下Tomcat+JSP实现留言板 | 2019-03-31 | 王玉松    | ![](/Blog-Share/img/1903/04/walkerwyl/message.png) | CentOS 7、Tomcat、MVC |
+---
+  layout:       post
+  title:        "在CentOS 7下Tomcat+JSP实现留言板"
+  date:         2019-03-31
+  author:       "王玉松"
+  header-img:   "/Blog-Share/img/1903/04/walkerwyl/message.png"
+  tags:
+      - CentOS
+      - Tomcat配置环境
+      - JSP
+      - MVC
+---
 
 # 在CentOS 7下Tomcat+JSP实现留言板
 
