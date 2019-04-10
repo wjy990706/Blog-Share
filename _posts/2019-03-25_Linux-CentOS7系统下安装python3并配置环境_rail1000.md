@@ -1,10 +1,15 @@
 #        Linux-CentOS7系统下安装python3并配置环境
 
-作者：桂志强
-
-时间：2019/3/25    
-
-主题：Python，Linux
+---
+layout:     post
+title:      "第四周python机器学习预测分析学习笔记"
+date:       2019-03-28
+author:     "桂志强"
+header-img: "img/post-bg-2015.jpg"
+tags:
+    - python
+    - 学习笔记
+---
 
 
 
