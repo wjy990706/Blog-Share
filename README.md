@@ -80,6 +80,14 @@ Step 4. push `local/Blog-Share` 到 `nickname/Blog-Share`
 
 Step 5. 提交一个 pull request，等待 review 之后合并
 
+## 本地运行调试
+
+1. 安装 ruby 及其包管理器 gem
+2. `gem install bundler`
+3. `bundle install`
+4. `jekyll serve` 或 `bundle exec jekyll serve`
+5. 按照命令行提示打开浏览器页面即可
+
 ## 转载须知
 
 1. 转载请联系（Email: Singularitylab@163.com; QQ: 171445684）
