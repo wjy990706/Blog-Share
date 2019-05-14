@@ -64,7 +64,7 @@
 
 6. 使用 UTF-8 编码
 
-7. Commit三要素：Theme, Summary and Details。Commit Summary 的格式为： `{年月周}-{文章标题}-{姓名}` ，如：190304-Django项目上线部署全流程-LKX
+7. Pull Request 三要素：Theme, Summary and Details。Pull Request Summary 的格式为： `{年月周}-{文章标题}-{姓名}` ，如：190304-Django项目上线部署全流程-LKX
 
 8. **文末请注明参考文章及链接**
 
@@ -78,7 +78,7 @@ Step 3. 在本地仓库中编写你的文章，写完后 commit（ ⚠️ 注意
 
 Step 4. push `local/Blog-Share` 到 `nickname/Blog-Share`
 
-Step 5. 提交一个 pull request，等待 review
+Step 5. 提交一个 pull request，等待 review 之后合并
 
 ## 转载须知
 
