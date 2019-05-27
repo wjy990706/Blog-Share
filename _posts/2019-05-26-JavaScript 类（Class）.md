@@ -63,11 +63,11 @@ iPhoneXR1.drop(); // Broken
 
 ```javascript
 class iPhone {
-	constructor() {
+    constructor() {
     this.price = "high";
   }
 
-	drop() {
+    drop() {
     alert("Broken");
   }
 }
