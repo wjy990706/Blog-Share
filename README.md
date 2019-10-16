@@ -88,9 +88,9 @@ Step 5. 获取本项目最新内容，与本项目进行同步：
 
 - 执行命令 `git fetch upstream`  获取本项目的最新更新内容
 
-- 执行命令 `git checkout master` 确保自己在 master 分支下
+- 执行命令 `git checkout master` 切换到 master 分支（或你的默认分支下，如 gh-pages）
 
-- 执行命令 `git merge upstream/master` ，把本项目的最新内容合并到你的本地仓库中
+- 执行命令 `git merge upstream/master` ，把本项目的最新内容合并到你的本地仓库的 master 分支（或你的默认分支下，如 gh-pages）中
 
 - 执行命令 `git push` 把合并后的内容 push 到你的远程仓库  `nickname/Blog-Share` 
 
